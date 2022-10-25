@@ -1,0 +1,388 @@
+---
+title: "Evidencia 2 - Proyecto Integrador"
+author: "Aylín Millán C."
+date: '2022-05-04'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Parte 1 
+Link video:
+<https://youtu.be/wnjkDozodHU>
+
+# Parte 2
+Trabajar con las secuencias de los coronavirus de otras especies que son similares a SARS-CoV-2, para tratar de explicar el fenómeno de zoonosis del virus. Incluye 20 especies reportadas. Puedes trabajar con variantes de SARS-CoV-2 de otros países.
+
+#Funciones
+```{r}
+library(Biostrings)
+library(seqinr)
+library(adegenet)
+library(ape)
+library(ggtree)
+library(DECIPHER)
+library(viridis)
+library(ggplot2)
+library(ggmsa)
+```
+
+
+
+# Bat Coronavirus
+```{r}
+library("seqinr")
+batC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/batC.fasta")
+    
+#1.Longitud de la secuencia 
+length(batC[[1]])
+
+```
+
+
+# Chicken Coronavirus
+```{r}
+library("seqinr")
+chickenC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/chickenC.fasta")
+
+    
+#1.Longitud de la secuencia 
+length(chickenC[[1]])
+
+```
+
+
+# Dog Coronavirus
+```{r}
+library("seqinr")
+dogC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/dogC.fasta")
+
+#1.Longitud de la secuencia 
+length(dogC[[1]])
+
+```
+
+
+# Dolphin Coronavirus
+```{r}
+library("seqinr")
+dolphinC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/dolphinC.fasta")
+
+#1.Longitud de la secuencia 
+length(dolphinC[[1]])
+
+```
+
+
+# Duck Coronavirus
+```{r}
+library("seqinr")
+duckC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/duckC.fasta")
+
+#1.Longitud de la secuencia 
+length(duckC[[1]])
+
+```
+
+
+# Feline Coronavirus
+```{r}
+library("seqinr")
+felineC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/felineC.fasta")
+    
+#1.Longitud de la secuencia 
+length(felineC[[1]])
+
+```
+
+
+# Ferret Coronavirus
+```{r}
+library("seqinr")
+ferretC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/ferretC.fasta")
+    
+#1.Longitud de la secuencia 
+length(ferretC[[1]])
+
+```
+
+
+# Giraffe Coronavirus
+```{r}
+library("seqinr")
+giraffeC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/giraffeC.fasta")
+    
+#1.Longitud de la secuencia 
+length(giraffeC[[1]])
+
+```
+
+
+# Gorilla Coronavirus
+```{r}
+library("seqinr")
+gorillaC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/gorillaC.fasta")
+
+#1.Longitud de la secuencia 
+length(gorillaC[[1]])
+
+```
+
+
+# Hamster Coronavirus
+```{r}
+library("seqinr")
+hamsterC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/hamsterC.fasta")
+    
+#1.Longitud de la secuencia 
+length(hamsterC[[1]])
+
+```
+
+
+# Hedgehog Coronavirus
+```{r}
+library("seqinr")
+hedgehogC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/hedgehogC.fasta")
+    
+#1.Longitud de la secuencia 
+length(hedgehogC[[1]])
+
+```
+
+
+# Leopard Coronavirus
+```{r}
+library("seqinr")
+leopardC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/leopardC.fasta")
+    
+#1.Longitud de la secuencia 
+length(leopardC[[1]])
+
+```
+
+
+# Lion Coronavirus
+```{r}
+library("seqinr")
+lionC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/lionC.fasta")
+    
+#1.Longitud de la secuencia 
+length(lionC[[1]])
+
+```
+
+
+# Mink Coronavirus
+```{r}
+library("seqinr")
+minkC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/minkC.fasta")
+    
+#1.Longitud de la secuencia 
+length(minkC[[1]])
+
+```
+
+
+# Porcine Coronavirus
+```{r}
+library("seqinr")
+porcineC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/porcineC.fasta")
+    
+#1.Longitud de la secuencia 
+length(porcineC[[1]])
+
+```
+
+
+# Rabbit Coronavirus
+```{r}
+library("seqinr")
+rabbitC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/rabbitC.fasta")
+    
+#1.Longitud de la secuencia 
+length(rabbitC[[1]])
+
+```
+
+
+# Raccoon Dog Coronavirus
+```{r}
+library("seqinr")
+raccoondogC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/raccoondogC.fasta")
+    
+#1.Longitud de la secuencia 
+length(raccoondogC[[1]])
+
+```
+
+
+# Rat Coronavirus
+```{r}
+library("seqinr")
+ratC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/ratC.fasta")
+    
+#1.Longitud de la secuencia 
+length(ratC[[1]])
+
+```
+
+
+# Tiger Coronavirus
+```{r}
+library("seqinr")
+tigerC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/tigerC.fasta")
+    
+#1.Longitud de la secuencia 
+length(tigerC[[1]])
+
+```
+
+
+# Water Deer Coronavirus
+```{r}
+library("seqinr")
+waterdeerC<- read.fasta("/Users/aylinmillan/Desktop/Biología computacional/Evidencia2 /FastaAnimales/waterdeerC.fasta")
+    
+#1.Longitud de la secuencia 
+length(waterdeerC[[1]])
+
+```
+
+
+# Árbol Filo
+**En esta parte se tuvieron que cambiar todos códigos genéticos debido a que no se estaban cargando correctamente para formar el árbol.**
+
+```{r ArbolFilo}
+ANIMALES <- c("JF705860", "EF065511","KX442564", "MF113046", "AY515512","MK423876","KY994645", "KX981440", "JN874560", "NC_016992", "NC_034972", "KX432213", "KJ473822", "KF793826", "AY572038", "JQ065044", "MN611521", "KM349742", "MH810163", "KY994645")
+
+virus_sequences <- read.GenBank(ANIMALES)
+
+str(virus_sequences)
+
+attributes(virus_sequences)
+names(virus_sequences)
+attr(virus_sequences, "species")
+
+write.dna(virus_sequences,  
+          file ="virus_seqs.fasta", 
+          format = "fasta", 
+          append = FALSE, 
+          nbcol = 6, 
+          colsep = " ", 
+          colw = 10)
+
+virus_seq_not_align <- readDNAStringSet("virus_seqs.fasta", format = "fasta")
+
+virus_seq_not_align <- OrientNucleotides(virus_seq_not_align)
+
+virus_seq_align <- AlignSeqs(virus_seq_not_align)
+
+BrowseSeqs(virus_seq_align, highlight=0)
+
+writeXStringSet(virus_seq_align, file="virus_seq_align.fasta")
+
+virus_aligned <- read.alignment("virus_seq_align.fasta", format = "fasta")
+
+matriz_distancia <- dist.alignment(virus_aligned, matrix = "similarity")
+
+temp <- as.data.frame(as.matrix(matriz_distancia))
+table.paint(temp, cleg=0, clabel.row=.5, clabel.col=.5) + scale_color_viridis()
+
+virus_tree <- nj(matriz_distancia)
+class(virus_tree) 
+
+virus_tree <- ladderize(virus_tree)
+plot(virus_tree, cex = 0.6)
+title("SARS-CoV-2 en distintas especies")
+
+```
+
+# Gráfica 
+```{r}
+C <- function(seq){
+  CA <-0
+  CT <-0
+  CC <-0
+  CG <-0
+  
+  nl <- length(seq)
+  
+  for(i in seq){
+    
+    if(i=="A"|| i=="a"){
+      CA = CA + 1
+    }
+    else if(i=="T"|| i=="t") {
+      CT = CT + 1
+    }
+    else if(i=="C"|| i=="c") {
+      CC = CC + 1
+    }
+    else if(i=="G"|| i=="g") {
+      CG = CG + 1
+    }
+  }
+  
+  bases<- c(CA,CT,CG,CC)
+  return(bases)
+}
+
+CP1<- c('#ABDEE6', '#CBAACB', '#FFCCB6', '#F3B0C3', '#C6DBDA',  '#FEE1E8','#F6EAC2', '#ECD5E3', '#FF968A', '#FFC5BF', '#FFD8BE', '#FFC8A2', '#D1F0F0', '#8FCACA', '#CCE2CB', '#B6CFB6', '#97C1A9', '#FCB9AA', '#A2E1DB', '#55CBCD')
+CP2<- c('#ABDEE6', '#CBAACB', '#FFCCB6', '#F3B0C3', '#C6DBDA',  '#FEE1E8','#F6EAC2', '#ECD5E3', '#FF968A', '#FFC5BF')
+CP3<- c('#FFD8BE', '#FFC8A2', '#D1F0F0', '#8FCACA', '#CCE2CB', '#B6CFB6', '#97C1A9', '#FCB9AA', '#A2E1DB', '#55CBCD')
+
+
+N1<-c("Bat","Chicken", "Dog", "Dolphin", "Duck","Feline","Ferret","Giraffe", "Gorilla","Hamster")
+N2<- c("Hedgehog","Leopard","Lion","Mink","Porcine", "Rabbit", "Raccoon Dog","Rat","Tiger","Water Deer")
+
+Fastas<- c(BAT<-sapply(batC, C),CHICKEN<-sapply(chickenC, C),DOG<-sapply(dogC, C),DOLPHIN<-sapply(dolphinC, C),DUCK<-sapply(duckC, C),FELINE<-sapply(felineC, C),FERRET<-sapply(ferretC, C),GIRAFFE<-sapply(giraffeC, C),GORILLA<-sapply(gorillaC, C),HAMSTER<-sapply(hamsterC, C),HEDGEHOG<-sapply(hedgehogC, C),LEOPARD<-sapply(leopardC, C),LION<-sapply(lionC, C),MINK<-sapply(minkC, C),PORCINE<-sapply(porcineC, C),RABBIT<-sapply(rabbitC, C),RACCOONDOG<-sapply(raccoondogC, C),RAT<-sapply(ratC, C),TIGER<-sapply(tigerC, C),WATERDEER<-sapply(waterdeerC, C))
+
+
+
+par(mar=c(4,3,0,1))
+virus<-barplot(matrix(c(Fastas), nrow=20, byrow=T), beside=T,  col = CP1, names.arg= c("A","T","G","C"))
+legend("topright", legend = N1 , 
+     col = CP2 ,bty = "n", pch=18 , pt.cex = 1, cex = 0.6, horiz = FALSE, inset = c(0.3, 0.001))
+legend("topright", legend = N2 , 
+     col = CP3 ,bty = "n", pch=18 , pt.cex = 1, cex = 0.6, horiz = FALSE, inset = c(0.05, 0.001))
+
+```
+
+
+# Interpretación 
+Se puede observar en la gráfica que las bases citosina y guanina presentan mayor variación. Esto es debido a que cada una de estos virus pertenecen a un diferente género, es decir pertenecen a beta, alfa o gamma. Además de que son animales muy distintos su ADN puede cambiar en distintas partes de las bases, generando alteraciones en las secuencias.
+
+Como se mencionó anteriormente, en el árbol filogenético se cambiaron los virus debido a que no funcionaban con los virus originalmente elegidos. Podemos observar que todos los virus tienen alguna relación entre ellos, o bien tienen alguna similitud. Por ejemplo el Yak coronavirus es muy similar al coronavirus respiratorio canino, esto lo podemos determinar ya que se encuentran cerca uno del otro y están unidos. A diferencia del bat coronavirus que se encuentra demasiado lejos del virus coronavirus de delfín y esto nos indica que tienen muy pocas similitudes entre sí. Además se puede apreciar como en la parte superior del árbol se encuentran los virus que tienen mayor similitud. 
+
+# Referencias
+
+Referencias:
+
+Abdelrahman, Z., Li, M., & Wang, X. (2020). Comparative Review of SARS-CoV-2, SARS-CoV, MERS-CoV, and Influenza A Respiratory Viruses. Frontiers in immunology, 11, 552909. https://doi.org/10.3389/fimmu.2020.552909
+
+Alsamman, A. M., & Zayed, H. (2020). The transcriptomic profiling of SARS-CoV-2 compared to SARS, MERS, EBOV, and H1N1. PloS one, 15(12), e0243270. https://doi.org/10.1371/journal.pone.0243270
+
+Flerlage, T., Boyd, D. F., Meliopoulos, V., Thomas, P. G., & Schultz-Cherry, S. (2021). Influenza virus and SARS-CoV-2: pathogenesis and host responses in the respiratory tract. Nature reviews. Microbiology, 19(7), 425–441. https://doi.org/10.1038/s41579-021-00542-7
+
+Hatmal, M. M., Alshaer, W., Al-Hatamleh, M., Hatmal, M., Smadi, O., Taha, M. O., Oweida, A. J., Boer, J. C., Mohamud, R., & Plebanski, M. (2020). Comprehensive Structural and Molecular Comparison of Spike Proteins of SARS-CoV-2, SARS-CoV and MERS-CoV, and Their Interactions with ACE2. Cells, 9(12), 2638. https://doi.org/10.3390/cells9122638
+
+Stout, A. E., André, N. M., Jaimes, J. A., Millet, J. K., & Whittaker, G. R. (2020). Coronaviruses in cats and other companion animals: Where does SARS-CoV-2/COVID-19 fit?. Veterinary microbiology, 247, 108777. https://doi.org/10.1016/j.vetmic.2020.108777
+
+Wu, Z., Harrich, D., Li, Z., Hu, D., & Li, D. (2021). The unique features of SARS-CoV-2 transmission: Comparison with SARS-CoV, MERS-CoV and 2009 H1N1 pandemic influenza virus. Reviews in medical virology, 31(2), e2171. https://doi.org/10.1002/rmv.217
+
+Zhang, G., Li, B., Yoo, D., Qin, T., Zhang, X., Jia, Y., & Cui, S. (2021). Animal coronaviruses and SARS-CoV-2. Transboundary and emerging diseases, 68(3), 1097–1110. https://doi.org/10.1111/tbed.13791
+
+```{r}
+citation("Biostrings")
+citation("seqinr")
+citation("adegenet")
+citation("ape")
+citation("ggtree")
+citation("DECIPHER")
+citation("viridis")
+citation("ggplot2")
+citation("ggmsa")
+```
